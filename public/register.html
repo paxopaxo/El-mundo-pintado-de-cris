@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <title>Registro</title>
+</head>
+
+<body>
+    <div class="form">
+        <form class="div">
+            <label>Correo</label>
+            <input class="correo" type="text"></input>
+            <label>Contraseña</label>
+            <input class="pass" type="password" />
+            <label>Username</label>
+            <input class="username" type="text" />
+
+            <input class="submit" type="submit" />
+        </form>
+    </div>
+    <script>
+        const form = document.querySelector('.div')
+        const submit = document.querySelector('.submit')
+
+        const correo = document.querySelector('.correo')
+        const pass = document.querySelector('.pass')
+        const username = document.querySelector('.username')
+
+        submit.addEventListener("click", (e) => {
+            e.preventDefault()
+            const url = 'http://localhost:8080/api/usuarios'
+            const data = {
+                username: username.value,
+                pass: pass.value,
+                correo: correo.value
+            }
+            fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Connection': 'keep-alive'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(resp => resp.json())
+                .then(data => console.log(data))
+        })
+    </script>
+</body>
+
+</html>
