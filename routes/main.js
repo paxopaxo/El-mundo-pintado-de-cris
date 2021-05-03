@@ -5,16 +5,16 @@ const mainPath = __dirname.split("\\").slice(0, -1).join('/')
 
 
 router.get('/', (req, res) => {
-    res.sendFile()
+    res.render('index')
 })
 
 router.get('/register', (req, res) => {
-    res.sendFile(mainPath + `/public/register.html`)
+    res.render('register')
 })
 
 for (let i = 1; i < 12; i++) {
     router.get(`/product${i}`, (req, res) => {
-        res.sendFile(`${mainPath}/public/products/product${i}.html`)
+        res.render(`products/product${i}`)
     })
 }
 

@@ -14,18 +14,14 @@
     <!-- FONT PACIFICO -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link rel=StyleSheet href="main.css" type="text/css" />
+    <link rel="stylesheet" href="assets/main.css" type="text/css" />
 </head>
 
 <body>
-    <div class="header">
-        <img src="http://elmundopintadodecris.cl/wp-content/uploads/2020/12/logo.jpg" />
-        <h1> El Mundo Pintado de Cris</h1>
-        <h2>Sobre mi</h2>
-    </div>
-
+    {{!-- Header --}}
+    {{> header }}
     <div class="products">
-        <div class="product1">
+        <div class="backup/products/product1">
             <a href="/product1">
                 <img src="https://i2.wp.com/thehappening.com/wp-content/uploads/2018/12/sombreros-perritos-7.jpg?fit=1024%2C694&ssl=1">
                 <p>Producto 1</p>
@@ -93,6 +89,8 @@
             </a>
         </div>
     </div>
+
+    {{!-- FOOTER --}}
     <footer class="footer ">
         <p class="visitame ">Visítame en mis redes sociales</p>
         <img class="first " src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Facebook_colored_svg_copy-512.png " />
