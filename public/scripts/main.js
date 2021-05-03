@@ -4,6 +4,10 @@ const products = document.querySelectorAll('.products div')
 
 let new_opacity = null
 
+const product1 = document.querySelector('.product1')
+
+product1.style.display = 'none'
+
 function fade() { // funcion que cada 200ms le suma 0.05 a un numero hasta llegar a 1
     let opacity = 0
     const suma = () => {
