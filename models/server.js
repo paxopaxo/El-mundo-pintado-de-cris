@@ -49,7 +49,6 @@ class Server {
     routes() {
         this.app.use(this.routesPath.main, require('../routes/main'))
         this.app.use(this.routesPath.usuarios, require('../routes/usuarios'))
-        this.app.use(this.routesPath.images, require('../routes/img'))
     }
 
     listen() {
