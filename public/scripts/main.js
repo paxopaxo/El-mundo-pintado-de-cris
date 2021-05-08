@@ -1,7 +1,7 @@
 const product1 = document.querySelector('.product1')
 const header = document.querySelector('.header')
 
-const sobreMi = document.querySelector('.header h2')
+const aboutMe = document.querySelector('.about-me')
 
 // product1.style.display = 'none'
 
@@ -17,7 +17,8 @@ if (screen.width <= 768) {
     const responsiveMenu = document.querySelector('.responsive-menu')
     const divClose = document.querySelector('.close')
 
-    sobreMi.addEventListener('touchend', () => {
+
+    aboutMe.addEventListener('touchend', () => {
 
         const { left } = responsiveMenu.style
 
@@ -36,6 +37,8 @@ if (screen.width <= 768) {
     })
 
 } else {
+
+    aboutMe.style.display = 'none'
 
     setInterval(() => {
         if (window.scrollY > 85) {
