@@ -6,13 +6,13 @@ const aboutMe = document.querySelector('.about-me')
 // product1.style.display = 'none'
 
 function disableScroll(bool) {
-    if (bool) {
+    if (bool) {   
         document.querySelector('body').classList.add('remove-scrolling')
-    } else {
+    } else {   
         document.querySelector('body').classList.remove('remove-scrolling')
-    }
-}
-
+    }   
+}          
+ 
 if (screen.width <= 768) {
     const responsiveMenu = document.querySelector('.responsive-menu')
     const divClose = document.querySelector('.close')
@@ -20,31 +20,33 @@ if (screen.width <= 768) {
 
     aboutMe.addEventListener('touchend', () => {
 
-        const { left } = responsiveMenu.style
+        const { left } = responsiveMenu.style 
 
         if (!left) {
             responsiveMenu.style.left = '0'
             disableScroll(true)
-        } else {
-            responsiveMenu.style.left = ''
+        } else {  
+            responsiveMenu.style.left = ''  
             disableScroll(false)
         }
     })
 
     divClose.addEventListener('touchend', () => {
         responsiveMenu.style.left = ''
-        disableScroll(false)
+        disableScroll(false)   
     })
-
-} else {
-
+    
+} else {     
+       
+    document.querySelector('.userimg').style.display = 'none'
+    document.querySelector('.login').style.display = 'none'
     aboutMe.style.display = 'none'
-
-    setInterval(() => {
-        if (window.scrollY > 85) {
+          
+    setInterval(() => {    
+        if (window.scrollY > 85) {  
             header.style.height = '125px'
-        } else {
+        } else { 
             header.style.height = ''
-        }
-    }, 200)
-}
+        } 
+    }, 200)   
+}  

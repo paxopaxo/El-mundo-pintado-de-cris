@@ -44,7 +44,7 @@ a:focus {
     transition: height 0.5s;
 }
 
-.header img {
+.header .mundo-pintado {
     grid-column: 2;
     height: 75%;
     width: auto;
@@ -56,11 +56,11 @@ a:focus {
     grid-column: 3;
 }
 
-.header h2 {
+.header .sobre-mi-texto {
     grid-column: 4;
 }
 
-.header h2:hover {
+.header .sobre-mi-texto:hover {
     color: red;
 }
 
@@ -103,7 +103,7 @@ a:focus {
 }
 
 .footer {
-    background-color: #51f1e4;
+    background-color: white;
     width: 100%;
     height: 8em;
 }
@@ -176,39 +176,46 @@ a:focus {
         top: 0;
         z-index: 2;
         display: grid;
-        grid-template-columns: 20% 1fr 20%;
+        grid-template-columns: 20% 15% 1fr 10% 10% 15%;
         grid-template-rows: 100%;
         justify-items: center;
         align-items: center;
-    }
-    .header img {
-        grid-column: 2;
+    } 
+    .header .mundo-pintado {
+        grid-column: 3;
         height: 75%;
         width: auto;
     }
     .header h1 {
         display: none;
     }
-    .header h2 {
-        font-size: 0.8em;
-        grid-column: 4;
+    .header .sobre-mi-texto {
         display: none;
-    }
-    .header h2:hover {
-        color: red;
     }
     .about-me {
         grid-row: 1;
     }
     .about-me div {
         width: 20px;
-        height: 5px;
+        height: 4px;
         border-radius: 4px;
         background-color: black;
         margin-bottom: 3px;
     }
     .palo5 {
         margin-bottom: 0;
+    }
+    .userimg {
+        grid-row: 1;
+        grid-column: 6;
+        height: 26%;
+        margin:auto;
+    }
+    .login {
+        grid-row: 1;
+        grid-column: 5;
+        font-size: 0.74em;
+        white-space: nowrap;
     }
     .products {
         width: 90%;
@@ -245,7 +252,7 @@ a:focus {
         margin: 0;
     }
     .footer {
-        background-color: #51f1e4;
+        background-color: white;
         width: 100%;
     }
     .visitame {
@@ -276,6 +283,7 @@ a:focus {
         left: -100vh;
         transition: left 2s;
     }
+    
     .responsive-menu .responsive-menu-box h3 {
         width: 80%;
         margin: auto;
