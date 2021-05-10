@@ -6,22 +6,22 @@ const aboutMe = document.querySelector('.about-me')
 // product1.style.display = 'none'
 
 function disableScroll(bool) {
-    if (bool) {   
+    if (bool) {
         document.querySelector('body').classList.add('remove-scrolling')
-    } else {   
+    } else {
         document.querySelector('body').classList.remove('remove-scrolling')
-    }   
-}          
+    }
+}
  
-if (screen.width <= 768) {
+if (screen.width <= 768) { 
     const responsiveMenu = document.querySelector('.responsive-menu')
     const divClose = document.querySelector('.close')
 
 
     aboutMe.addEventListener('touchend', () => {
 
-        const { left } = responsiveMenu.style 
-
+        const { left } = responsiveMenu.style
+        
         if (!left) {
             responsiveMenu.style.left = '0'
             disableScroll(true)
@@ -36,7 +36,7 @@ if (screen.width <= 768) {
         disableScroll(false)   
     })
     
-} else {     
+} else {         
        
     document.querySelector('.userimg').style.display = 'none'
     document.querySelector('.login').style.display = 'none'

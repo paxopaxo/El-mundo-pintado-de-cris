@@ -9,9 +9,8 @@
 
 body {
     overflow-x: hidden;
-    background-color: hsl(0, 0%, 95%);
     margin: 0px;
-    background-color: #f8f8f8;
+    background: linear-gradient(0deg, rgb(79, 173, 212) 0%,rgb(243, 206, 42) 100%); 
 }
 
 .responsive-menu {
@@ -77,10 +76,10 @@ a:focus {
     align-content: space-between;
 }
 
-.products div {
+.products div { 
     background-color: white;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-    border: none;
+    border: 6px solid white;
     border-radius: 15px;
     overflow: hidden;
     transition: 0.2s;
@@ -103,7 +102,7 @@ a:focus {
 }
 
 .footer {
-    background-color: white;
+    background-color: #f8f8f8;
     width: 100%;
     height: 8em;
 }
@@ -154,9 +153,8 @@ a:focus {
     }
     body {
         overflow-x: hidden;
-        background-color: hsl(0, 0%, 95%);
         margin: 0px;
-        background-color: #f8f8f8;
+        /* background-color: #f8f8f8; */
     }
     a,
     a:visited,
@@ -232,7 +230,7 @@ a:focus {
     .products div {
         background-color: white;
         box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-        border: none;
+        border: 5px solid white;
         border-radius: 15px;
         overflow: hidden;
         transition: 0.2s;
@@ -252,7 +250,7 @@ a:focus {
         margin: 0;
     }
     .footer {
-        background-color: white;
+        background-color: #f8f8f8;
         width: 100%;
     }
     .visitame {
