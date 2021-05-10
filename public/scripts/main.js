@@ -11,7 +11,7 @@ function disableScroll(bool) {
     } else {
         document.querySelector('body').classList.remove('remove-scrolling')
     }
-}
+} 
  
 if (screen.width <= 768) { 
     const responsiveMenu = document.querySelector('.responsive-menu')
