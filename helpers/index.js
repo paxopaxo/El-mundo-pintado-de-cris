@@ -1,5 +1,7 @@
 const mongoConnection = require('./conectaDB')
+const generarJWT= require('./generaJWT')
 
 module.exports = {
-    mongoConnection
+    mongoConnection,
+    generarJWT
 }

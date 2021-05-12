@@ -1,55 +1,57 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/register.css" rel="stylesheet" type="text/css">
-    <title>Registro</title>
+    <meta charset="utf-8">
+    <title>El Mundo Pintado de Cris</title>
+    <!--AWESOME PATTERN -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!-- FONTS BALOO TAMMA 2 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&family=Fraunces:wght@200&family=Open+Sans:wght@300&family=Vollkorn:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FONT PACIFICO -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/main.css" type="text/css" />
+    <link rel="stylesheet" href="assets/register.css" type="text/css" />
 </head>
 
 <body>
-    <div class="form">
-        <form class="div">
+    {{!-- Header --}}
+    {{> header }}
+    <div class="register-container">
+        <form class="logeo">
             <label>Correo</label>
-            <input class="correo" type="text"></input>
+            <input class="login-email" type="email" />
             <label>Contraseña</label>
-            <input class="pass" type="password" />
+            <input class="login-password" type="password" />
+            <h3> Ya tienes cuenta ?</h3>
+            <input class="login-submit" type="submit" />
+        </form>
+        <form class="registro">
+            <label>Correo</label>
+            <input class="register-email" type="email"/>
             <label>Username</label>
-            <input class="username" type="text" />
-
-            <input class="submit" type="submit" />
+            <input class="register-username" type="text" />
+            <label>Contraseña</label>
+            <input class="register-password" type="password" />
+            <input class="register-submit" type="submit" />
         </form>
     </div>
-    <script>
-        const form = document.querySelector('.div')
-        const submit = document.querySelector('.submit')
-
-        const correo = document.querySelector('.correo')
-        const pass = document.querySelector('.pass')
-        const username = document.querySelector('.username')
-
-        submit.addEventListener("click", (e) => {
-            e.preventDefault()
-            const url = 'http://localhost:8080/api/usuarios'
-            const data = {
-                username: username.value,
-                pass: pass.value,
-                correo: correo.value
-            }
-            fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Connection': 'keep-alive'
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(resp => resp.json())
-                .then(data => console.log(data))
-        })
-    </script>
+    {{!-- FOOTER --}}
+    <footer class="footer ">
+        <p class="visitame">Visita mis redes sociales</p>
+        <div class="imgs">
+            <img class="first " src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Facebook_colored_svg_copy-512.png " />
+            <img class="second " src="https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_instagram-512.png ">
+        </div>
+        <p class="cristina "> Cristina Orlandini 2021 </p>
+        <a href="/register "><button class="btn-reg "></button></a>
+    </footer>
+    <!-- JAVASCRIPT -->
+    <script type="text/javascript " src="scripts/main.js "></script>
 </body>
 
 </html>

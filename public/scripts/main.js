@@ -1,6 +1,5 @@
 const product1 = document.querySelector('.product1')
 const header = document.querySelector('.header')
-
 const aboutMe = document.querySelector('.about-me')
 
 // product1.style.display = 'none'
@@ -13,15 +12,20 @@ function disableScroll(bool) {
     }
 } 
  
-if (screen.width <= 768) { 
+document.querySelector('.login').addEventListener('click', () => {
+    window.location.pathname = '/register'
+}) 
+
+
+
+if (screen.width <= 768) {
     const responsiveMenu = document.querySelector('.responsive-menu')
     const divClose = document.querySelector('.close')
-
 
     aboutMe.addEventListener('touchend', () => {
 
         const { left } = responsiveMenu.style
-        
+
         if (!left) {
             responsiveMenu.style.left = '0'
             disableScroll(true)
@@ -37,9 +41,7 @@ if (screen.width <= 768) {
     })
     
 } else {         
-       
-    document.querySelector('.userimg').style.display = 'none'
-    document.querySelector('.login').style.display = 'none'
+
     aboutMe.style.display = 'none'
           
     setInterval(() => {    

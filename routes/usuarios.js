@@ -2,7 +2,9 @@ const { Router } = require('express')
 const { check } = require('express-validator')
 
 const {
-    validarCampos
+    validarCampos,
+    verificaJWT,
+    usuarioAutenticadoEsElMismoOAdmin
 } = require('../middleweres')
 
 const {
@@ -36,11 +38,14 @@ router.post('/', [
     verificaCorreoEnDB,
 ], crearUsuario)
 
+
 router.delete('/:id', [
     check('id', 'Debes ingresar un id').notEmpty(),
     check('id', 'Debes ingresar un id de mongo').isMongoId(),
     validarCampos,
-    verificaIdEsValido
+    verificaIdEsValido,
+    verificaJWT,
+    usuarioAutenticadoEsElMismoOAdmin
 ], eliminarUsuario)
 
 module.exports = router

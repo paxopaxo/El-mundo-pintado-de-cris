@@ -5,8 +5,6 @@ const path = require('path');
 // conexion a los helpers 
 const { mongoConnection } = require('../helpers')
 
-
-console.log(path.join(__dirname, '../views/partials'))
 class Server {
     constructor() {
         this.app = express()
@@ -16,7 +14,10 @@ class Server {
         this.routesPath = {
             usuarios: '/api/usuarios',
             main: '/',
-            images: '/api/images'
+            images: '/api/images',
+            login: '/api/login',
+            categorias: '/api/categorias',
+            productos: '/api/productos'
         }
 
 
@@ -49,6 +50,10 @@ class Server {
     routes() {
         this.app.use(this.routesPath.main, require('../routes/main'))
         this.app.use(this.routesPath.usuarios, require('../routes/usuarios'))
+        this.app.use(this.routesPath.login, require('../routes/login'))
+        this.app.use(this.routesPath.categorias, require('../routes/categorias'))
+        this.app.use(this.routesPath.productos, require('../routes/productos'))
+
     }
 
     listen() {

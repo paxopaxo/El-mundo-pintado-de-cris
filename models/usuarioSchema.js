@@ -22,7 +22,7 @@ const usuarios = new Schema({
     },
     rol: {
         type: String,
-        default: 'ADMIN'
+        default: 'USER'
     },
     estado: {
         type: Boolean,
