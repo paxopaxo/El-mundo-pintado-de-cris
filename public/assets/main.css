@@ -115,7 +115,17 @@ a:focus {
 .footer {
     background-color: ivory;
     width: 100%;
-    height: 8em;
+    position:relative;
+}
+.mueca {
+    background-color: rgba(30,30,30,1);
+    width: 40px;
+    height: 40px;
+    position:absolute;
+    left: 50%;
+    top: -22%;
+    transform: translateX(-50%) rotate(45deg);
+    
 }
 
 .visitame {
@@ -131,7 +141,7 @@ a:focus {
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
-    height: 35%;
+    height: 70px;
     gap: 2.5%;
 }
 

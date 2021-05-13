@@ -4,13 +4,19 @@
     margin: auto;
     margin-top: 200px;
     background-color: ivory;
-    border-radius: 10px;
+    border-radius: 20px;
     margin-bottom: 100px;
     display: grid;
-    justify-content: center;
-    align-items: center;
+    padding: 90px 110px 100px 110px;
 }
 .registro {
-    display:none;
+    width: 90%;
+    margin: auto;
+    margin-top: 200px;
+    background-color: ivory;
+    border-radius: 20px;
+    margin-bottom: 100px;
+    display: grid;
+    padding: 90px 110px 100px 110px;
 }
 

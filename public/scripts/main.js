@@ -14,8 +14,7 @@ function disableScroll(bool) {
  
 document.querySelector('.login').addEventListener('click', () => {
     window.location.pathname = '/register'
-}) 
-
+})
 
 
 if (screen.width <= 768) {
