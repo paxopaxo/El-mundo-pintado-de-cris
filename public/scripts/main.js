@@ -16,6 +16,10 @@ document.querySelector('.login').addEventListener('click', () => {
     window.location.pathname = '/register'
 })
 
+document.querySelector('.mundo-pintado').addEventListener('click', () => {
+    window.location.pathname = '/'
+})
+
 
 if (screen.width <= 768) {
     const responsiveMenu = document.querySelector('.responsive-menu')

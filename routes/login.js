@@ -11,7 +11,7 @@ const { login } = require('../controllers/login')
 
 
 router.post('/',[
-    check('correo', 'Debes ingresar un correo').isEmail(),
+    check('correo', 'Debes ingresar un correo válido').isEmail(),
     check('correo','Debes ingresar un correo').notEmpty(),
     check('pass','Debes ingresar la contraseña').notEmpty(),
     validarCampos,

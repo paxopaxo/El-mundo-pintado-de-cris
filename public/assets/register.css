@@ -1,5 +1,6 @@
 
 .logeo {
+    position:relative;
     width: 90%;
     margin: auto;
     margin-top: 200px;
@@ -10,13 +11,37 @@
     padding: 90px 110px 100px 110px;
 }
 .registro {
+    position:relative;
     width: 90%;
     margin: auto;
     margin-top: 200px;
     background-color: ivory;
     border-radius: 20px;
     margin-bottom: 100px;
-    display: grid;
+    display: none;
     padding: 90px 110px 100px 110px;
 }
+.btn-create-account, .btn-login-account {
+    transition: color ease-out 150ms display 2s;
+}
+.btn-create-account:hover, .btn-login-account:hover {
+    cursor: pointer;
+    color:red;
+}
+.register-server-response, .logeo-server-response {
+    position:absolute;
+    opacity:0;
+    top: 4%;
+    right: 4%;
+    padding: 7px;
+    background-color:chartreuse;
+    border-radius:5px;
+    transition: opacity ease-in 300ms;
+}
+.register-server-response > div {
+    font-size: 0.5em;
+}
 
+.logeo-server-response > div {
+    font-size: 0.5em;
+}

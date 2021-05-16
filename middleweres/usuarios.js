@@ -1,3 +1,4 @@
+const { getError } = require("../helpers")
 const { Usuario } = require("../models")
 
 // Middleweres de Obtener usuario 
@@ -15,15 +16,15 @@ const verificaCorreoEnDB = async(req, res, next) => {
         Usuario.findOne({ correo }),
         Usuario.findOne({ username })
     ])
-    if (verificacion_correo) return res.status(400).json({ msg: 'El correo ya está registrado' })
-    if (verificacion_username) return res.status(400).json({ msg: 'El username ya está registrado' })
+    if (verificacion_correo) return res.status(400).json( getError('El correo ya está registrado') )
+    if (verificacion_username) return res.status(400).json( getError('El username ya está registrado') )
     next()
 }
 const verificaIdEsValido = async(req, res, next) => {
     const { id } = req.params
     const usuario = await Usuario.findById(id)
-    if (!usuario) return res.status(400).json({ msg: ' El id no corresponde a ningún usuario' })
-    if (!usuario.estado) return res.status(400).json({ msg: 'El usuario ingresado no existe estado: false' })
+    if (!usuario) return res.status(400).json( getError(' El id no corresponde a ningún usuario') )
+    if (!usuario.estado) return res.status(400).json( getError('El usuario ingresado no existe') )
     next()
 }
 

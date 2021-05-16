@@ -201,6 +201,7 @@ a:focus {
         align-items: center;
     } 
     .header .mundo-pintado {
+        cursor:pointer;
         grid-column: 3;
         height: 75%;
         width: auto;

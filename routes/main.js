@@ -18,6 +18,9 @@ for (let i = 1; i < 12; i++) {
     })
 }
 
+router.get('/config', (req,res) => {
+    res.render('config')
+})
 
 
 
