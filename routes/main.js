@@ -1,8 +1,6 @@
 const { Router } = require('express')
 const router = Router()
 
-const mainPath = __dirname.split("\\").slice(0, -1).join('/')
-
 
 router.get('/', (req, res) => {
     res.render('index')
@@ -17,10 +15,6 @@ for (let i = 1; i < 12; i++) {
         res.render(`products/product${i}`)
     })
 }
-
-router.get('/config', (req,res) => {
-    res.render('config')
-})
 
 
 

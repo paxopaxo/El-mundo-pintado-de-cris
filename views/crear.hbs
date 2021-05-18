@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>El Mundo Pintado de Cris</title>
+    <link rel="icon" type="image/png" href="/img/logo.png">
+    <!--AWESOME PATTERN -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!-- FONTS BALOO TAMMA 2 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&family=Fraunces:wght@200&family=Open+Sans:wght@300&family=Vollkorn:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FONT PACIFICO -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/main.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/config/crear.css" type="text/css">
+</head>
+
+<body>
+    {{!-- Header --}}
+    {{> header }}
+    <div class="usuarios-container">
+        <div class="productos-name-container">
+            <h3>Productos</h3>
+        </div>
+        <form class="productos-form">
+            <label>Nombre</label>
+            <input type="text" />
+            <label>Categoria</label>
+            <input type="text" />
+            <label>Categoria</label>
+            <select class="select-categorias" selected="false" >
+            </select>
+            <label>Disponible</label>  
+            <select name="disponibilidad">
+                <option value="true">Si</option>
+                <option value="false">No</option>
+            </select>
+            <label for="desc">Descripcion</label>
+            <input type="text" name="desc" />
+            <input type="submit" />
+        </form>
+        <div class="categoria-name-container">
+            <h3>Categoria</h3>
+        </div>
+        <form class="categoria-form">
+            <label>Nombre</label>
+            <input type="text" />
+            <input type="submit" />
+        </form>
+        
+    </div>
+
+    {{!-- FOOTER --}}
+    {{> footer }}
+
+    <!-- JAVASCRIPT -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript " src="/scripts/main.js "></script>
+    <script type="text/javascript" src="/scripts/config/crear.js"></script>
+</body>
+
+</html>

@@ -96,7 +96,7 @@ const loginSubmitClick = async(e) => {
 }
 
 const registerSubmitClick = async(e) => {
-    // e.preventDefault()
+    e.preventDefault()
     const div = document.querySelector('.register-server-response')
     const url = mainPageURL + '/api/usuarios'
     
@@ -104,7 +104,6 @@ const registerSubmitClick = async(e) => {
     div.style.opacity = ''
 
     const exist = [ Boolean(registerUsername.value), Boolean(registerEmail.value), Boolean(registerPassword.value)]
-    console.log(exist)
     if( exist.includes(false) ) {
         return 
     }

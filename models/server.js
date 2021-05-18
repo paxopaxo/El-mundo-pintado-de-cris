@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const path = require('path');
+const { socketControllerCrear } = require('../socketController/config/')
 
 // conexion a los helpers 
 const { mongoConnection } = require('../helpers')
@@ -8,16 +9,20 @@ const { mongoConnection } = require('../helpers')
 class Server {
     constructor() {
         this.app = express()
+        this.http = require('http').Server( this.app )
+        this.io = require('socket.io')( this.http )
         this.port = process.env.PORT
         this.mongo_uri = process.env.MONGODB_URI
         this.hbs = require('hbs')
         this.routesPath = {
-            usuarios: '/api/usuarios',
             main: '/',
+            config: '/config',
+            usuarios: '/api/usuarios',
             images: '/api/images',
             login: '/api/login',
             categorias: '/api/categorias',
-            productos: '/api/productos'
+            productos: '/api/productos',
+            buscar: '/api/buscar'
         }
 
 
@@ -28,6 +33,9 @@ class Server {
 
         this.middleweres()
             // ejecuta los middleweres globales
+
+        this.sockets()
+
         this.routes()
             //añade las rutas
     }
@@ -48,16 +56,25 @@ class Server {
     }
 
     routes() {
+        // Pages
         this.app.use(this.routesPath.main, require('../routes/main'))
+        this.app.use(this.routesPath.config, require('../routes/config'))
+
+        // API
         this.app.use(this.routesPath.usuarios, require('../routes/usuarios'))
         this.app.use(this.routesPath.login, require('../routes/login'))
         this.app.use(this.routesPath.categorias, require('../routes/categorias'))
         this.app.use(this.routesPath.productos, require('../routes/productos'))
+        this.app.use(this.routesPath.buscar, require('../routes/buscar'))
 
     }
 
+    sockets() {
+        this.io.on('connection', socketControllerCrear)
+    }
+
     listen() {
-        this.app.listen(this.port, () => {
+        this.http.listen(this.port, () => {
             console.log('Servidor corriendo en el puerto ', this.port)
         })
     }

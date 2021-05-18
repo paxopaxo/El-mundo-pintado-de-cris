@@ -16,18 +16,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/main.css" type="text/css" />
+    <link rel="stylesheet" href="assets/config.css">
 </head>
 
 <body>
     {{!-- Header --}}
     {{> header }}
-    
+    <div class="select-grid-container">
+        <a href="/config/crear"><button>Crear</button></a>
+        <a href="/config/borrar"><button>Borrar</button></a>
+        <a href="/config/actualizar"><button>Actualizar</button></a>
+        <a href="/config/buscar"><button>Buscar</button></a>
+    </div>
 
     {{!-- FOOTER --}}
     {{> footer }}
 
     <!-- JAVASCRIPT -->
     <script type="text/javascript " src="scripts/main.js "></script>
+    <script type="text/javascript" src="scripts/config.js"></script>
 </body>
 
 </html>
