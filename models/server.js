@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const path = require('path');
-const { socketControllerCrear } = require('../socketController/config/')
+const { obtieneCategorias, obtieneProductos } = require('../socketController/config/')
 
 // conexion a los helpers 
 const { mongoConnection } = require('../helpers')
@@ -70,7 +70,8 @@ class Server {
     }
 
     sockets() {
-        this.io.on('connection', socketControllerCrear)
+        this.io.on('connection', obtieneProductos)
+        this.io.on('connection', obtieneCategorias)
     }
 
     listen() {

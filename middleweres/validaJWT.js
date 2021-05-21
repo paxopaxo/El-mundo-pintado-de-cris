@@ -1,6 +1,7 @@
 const { json } = require('express')
 const jwt = require('jsonwebtoken')
 const { Usuario } = require('../models')
+const { getError } = require('../helpers')
 
 const verify = (token) => {
     return new Promise( (resolve, reject) => {
@@ -18,22 +19,23 @@ const verify = (token) => {
 const verificaJWT = async(req, res, next) => {
     try {
         const token = req.header('token')
-        if (!token) return res.json({ msg: 'No has enviado el Token' })
+        if (token[0] === '"') return res.status(400).json( getError('Debes enviar el token parseado') )
+        if (!token) return res.status(400).json( getError('No has enviado el Token', 'token') )
 
         const id = await verify(token)
 
         const user = await Usuario.findById(id)
 
         if (!user) {
-            res.json({ msg: 'El id no le corresponde a ningún usuario'})
+            res.status(400).json( getError('Token Inválido', 'token') ) // Token Inválido (No le corresponde a ningún usuario)
         } else {
             req.usuarioAutenticado = user
             next()
         }
 
     } catch(err) {
-        res.json({ msg: err.message })
-    }    
+        res.status(400).json( getError( err.message ) )
+    }
 }
 
 const usuarioAutenticadoEsElMismoOAdmin = (req,res, next) => {
@@ -43,7 +45,7 @@ const usuarioAutenticadoEsElMismoOAdmin = (req,res, next) => {
     if (req.usuarioAutenticado.rol === 'ADMIN' || req.usuarioAutenticado._id === id) {
         next()
     } else {
-        res.status(400).json({ msg: 'No puedes eliminar otro usuario que no sea el tuyo propio' }) // Si eres admin si puedes
+        res.status(400).json( getError('No puedes eliminar otro usuario que no sea el tuyo propio','id') ) // Si eres admin si puedes
     }
 }
 
@@ -54,7 +56,7 @@ const usuarioEsAdmin = (req, res, next) => {
     if (req.usuarioAutenticado.rol === 'ADMIN') {
         next()
     } else {
-        res.status(400).json({ msg: 'Debes ser admin para realizar esta accion' })
+        res.status(400).json( getError('Debes ser admin para realizar esta accion', 'token') )
     }
 }
 

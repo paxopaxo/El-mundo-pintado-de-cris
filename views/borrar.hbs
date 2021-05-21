@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/main.css" type="text/css" />
-    <link rel="stylesheet" href="/assets/config/crear.css" type="text/css">
+    <link rel="stylesheet" href="/assets/config/borrar.css" type="text/css">
 </head>
 
 <body>
@@ -26,26 +26,16 @@
             <h3>Productos</h3>
         </div>
         <form class="productos-form">
-            <label>Nombre</label>
-            <input type="text" />
-            <label>Categoria</label>
-            <select class="select-categorias" selected="false" >
+            <select class="select-productos" selected="false" >
             </select>
-            <label>Disponible</label>  
-            <select name="disponibilidad">
-                <option value="true">Si</option>
-                <option value="false">No</option>
-            </select>
-            <label for="desc">Descripcion</label>
-            <input type="text" name="desc" />
             <button>rer</button>
         </form>
         <div class="categoria-name-container">
             <h3>Categoria</h3>
         </div>
         <form class="categoria-form">
-            <label>Nombre</label>
-            <input type="text" />
+            <select class="select-categoria" selected="false" >
+            </select>
             <button>sas</button>
         </form>
         
@@ -57,7 +47,7 @@
     <!-- JAVASCRIPT -->
     <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript " src="/scripts/main.js "></script>
-    <script type="text/javascript" src="/scripts/config/crear.js"></script>
+    <script type="text/javascript" src="/scripts/config/borrar.js"></script>
 </body>
 
 </html>
