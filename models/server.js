@@ -70,7 +70,6 @@ class Server {
     }
 
     sockets() {
-        this.io.on('connection', obtieneProductos)
         this.io.on('connection', obtieneCategorias)
     }
 

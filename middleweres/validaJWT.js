@@ -19,8 +19,8 @@ const verify = (token) => {
 const verificaJWT = async(req, res, next) => {
     try {
         const token = req.header('token')
-        if (token[0] === '"') return res.status(400).json( getError('Debes enviar el token parseado') )
         if (!token) return res.status(400).json( getError('No has enviado el Token', 'token') )
+        if (token[0] === '"') return res.status(400).json( getError('Debes enviar el token parseado') )
 
         const id = await verify(token)
 

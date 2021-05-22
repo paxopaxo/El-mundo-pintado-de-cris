@@ -4,8 +4,8 @@ const { check } = require('express-validator')
 const { verificaExisteCorreo } = require('../express-validator')
 const { categoriaExisteEnDB, categoriaPorIdExisteEnDB } = require('../express-validator/categorias')
 
-const { validarCampos, verificaJWT } = require('../middleweres')
-const { crearCategoria, obtenerCategoria, actualizarCategoria, obtenerCategoriaPorId } = require('../controllers/categorias')
+const { validarCampos, verificaJWT, usuarioEsAdmin } = require('../middleweres')
+const { crearCategoria, obtenerCategoria, actualizarCategoria, obtenerCategoriaPorId, borrarCategoria } = require('../controllers/categorias')
 
 const router = Router()
 
@@ -21,11 +21,12 @@ router.get('/:id', [
 
 
 router.post('/',[
-    verificaJWT,
     check('nombre','Debes asignar un nombre a la categoria').notEmpty(),
     validarCampos,
     check('nombre').custom(categoriaExisteEnDB),
-    validarCampos
+    validarCampos,
+    verificaJWT,
+    usuarioEsAdmin
 ], crearCategoria)
 
 router.put('/:id', [
@@ -35,20 +36,22 @@ router.put('/:id', [
     validarCampos,
     check('id').custom(categoriaPorIdExisteEnDB),
     validarCampos
+    
 ], actualizarCategoria)
 
 
 // TODO PARA CUANDO TENGA HECHO LOS PRODUCTOS
 
 
-// router.delete('/:id', [
-//     check('id', 'Debes ingresar un id').notEmpty(),
-//     check('id','El id no es de mongo').isMongoId(),
-//     check('nombre', 'Debes ingresar el nuevo nombre de la categoria').notEmpty(),
-//     validarCampos,
-//     check('id').custom(categoriaPorIdExisteEnDB),
-//     validarCampos
-// ], borrarCategoria )
+router.delete('/:id', [
+    check('id', 'Debes ingresar un id').notEmpty(),
+    check('id','El id no es de mongo').isMongoId(),
+    validarCampos,
+    check('id').custom(categoriaPorIdExisteEnDB),
+    validarCampos,
+    verificaJWT,
+    usuarioEsAdmin
+], borrarCategoria )
 
 
 

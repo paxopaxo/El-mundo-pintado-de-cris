@@ -62,7 +62,7 @@ const actualizarProducto = async(req, res) => {
         } 
         objFiltrado.usuario = req.usuarioAutenticado._id
 
-        const producto = await Producto.findOneAndUpdate(id, objFiltrado, { new: true })
+        const producto = await Producto.findByIdAndUpdate(id, objFiltrado, { new: true })
             .populate('categoria','nombre')
             .populate('usuario',['username', 'correo'] )
         
@@ -76,9 +76,11 @@ const actualizarProducto = async(req, res) => {
 
 const borrarProducto = async(req,res) => {
     const { id } = req.params
-    const producto = await Producto.findOneAndUpdate(id, { estado: false }, { new: true })
+    const producto = await Producto.findByIdAndUpdate(id, { estado: false }, { new: true })
         .populate('categoria','nombre')
         .populate('usuario',['username', 'correo'] )
+    
+    
     res.status(200).json({ msg: 'El usuario ha sido eliminado correctamente', producto })
 }
 

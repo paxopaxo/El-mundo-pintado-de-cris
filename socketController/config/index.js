@@ -8,17 +8,26 @@ const Producto = require( modelPathProducto )
 
 
 const obtieneCategorias = async(socket) => {
+
     const categorias = await Categoria.find({estado: true })
     socket.emit('categoria', categorias)
-}
-
-const obtieneProductos = async(socket) => {
+    
     const productos = await Producto.find({estado: true })
     socket.emit('producto', productos)
+
+    socket.on('producto-on-server', async(payload) => {
+        const productos = await Producto.find({estado: true })
+        socket.emit('producto', productos)
+    })
+
+    socket.on('categoria-on-server', async(payload) => {
+        const categorias = await Categoria.find({estado: true })
+        socket.emit('categoria', categorias)
+    })
 }
+
     
 
-module.exports = {
-    obtieneCategorias,
-    obtieneProductos,
+module.exports = { 
+    obtieneCategorias
 }

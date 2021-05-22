@@ -1,4 +1,4 @@
-const { Categoria } = require('../models')
+const { Categoria, Producto } = require('../models')
 
 
 const obtenerCategoria = async(req, res) => {
@@ -72,10 +72,29 @@ const obtenerCategoriaPorId = async(req, res) => {
     }
 }
 
+const borrarCategoria = async(req,res) => {
+    try {
+        const { id } = req.params
+        const categoria = await Categoria.findByIdAndUpdate(id, { estado: false }, { new: true })
+            .populate('usuario', ['username','correo'])
+
+        const productosEliminar = await Producto.updateMany({ categoria: categoria._id }, { estado: false })
+        
+        console.log(productosEliminar)
+        res.status(200).json({
+            categoria
+        })
+
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 
 module.exports = {
     crearCategoria,
     obtenerCategoria,
     actualizarCategoria,
-    obtenerCategoriaPorId
+    obtenerCategoriaPorId,
+    borrarCategoria
 }

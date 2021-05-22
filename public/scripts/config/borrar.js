@@ -48,6 +48,8 @@ socket.on('categoria', (payload) => {
 })
 
 socket.on('producto', (payload) => {
+    selectProductos.innerHTML = ''
+
     const fragment = document.createDocumentFragment()
 
     payload.forEach( producto => {
@@ -72,6 +74,8 @@ productoBtn.addEventListener('click', async(e) => {
 
     const response = await makePettition({ url, method: 'DELETE', token })
     const dataRecived = await response.json()
+
+    socket.emit('producto-on-server', undefined )
 
     if (response.ok) {
         console.log(dataRecived)
