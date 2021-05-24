@@ -33,6 +33,8 @@ socket.on('disconnect', () => {
 } )
 
 socket.on('categoria', (payload) => {
+    selectCategoria.innerHTML = ''
+    
     const fragment = document.createDocumentFragment()
 
     payload.forEach( categoria => {
@@ -69,23 +71,37 @@ productoBtn.addEventListener('click', async(e) => {
     e.preventDefault()
     const option = selectProductos.value
     const id = productosID.get( option )
-    
+
     const url = location.origin + '/api/productos/' + id
 
     const response = await makePettition({ url, method: 'DELETE', token })
     const dataRecived = await response.json()
 
-    socket.emit('producto-on-server', undefined )
 
     if (response.ok) {
+        socket.emit('producto-on-server', undefined )
         console.log(dataRecived)
     } else {
         console.log(dataRecived)
     }
 
 })
-categoriaBtn.addEventListener('click', (e) => {
+categoriaBtn.addEventListener('click', async(e) => {
     e.preventDefault()
     const option = selectCategoria.value
+    const id = categoriasID.get(option)
+
+    const url = location.origin + '/api/categorias/' + id
+
+    const response = await makePettition( { url, method: 'DELETE', token })
+    const dataRecived = await response.json()
+
+    if (response.ok) {
+        socket.emit('categoria-on-server', undefined )
+        socket.emit('producto-on-server', undefined )
+        console.log(dataRecived)
+    } else {
+        console.log(dataRecived)
+    }    
     
 })

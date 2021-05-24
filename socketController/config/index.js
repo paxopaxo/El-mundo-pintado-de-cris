@@ -21,7 +21,7 @@ const obtieneCategorias = async(socket) => {
     })
 
     socket.on('categoria-on-server', async(payload) => {
-        const categorias = await Categoria.find({estado: true })
+        const categorias = await Categoria.find({ estado: true })
         socket.emit('categoria', categorias)
     })
 }

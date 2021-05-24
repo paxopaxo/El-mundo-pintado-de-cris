@@ -4,7 +4,7 @@ const { request, json } = require('express')
 const bcrypt = require('bcryptjs')
 
 const obtenerUsuarios = async(req, res) => {
-    let { desde = 0, limite = 5 } = req.query // se reciben como string 
+    let { desde = 0, limite = 10 } = req.query // se reciben como string 
 
     const [SelectedUsers, NumberOfUsers] = await Promise.all([
         Usuario.find({ estado: true }).skip(Number(desde)).limit(Number(limite)),

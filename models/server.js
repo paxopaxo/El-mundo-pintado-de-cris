@@ -67,6 +67,10 @@ class Server {
         this.app.use(this.routesPath.productos, require('../routes/productos'))
         this.app.use(this.routesPath.buscar, require('../routes/buscar'))
 
+        // 404 Error Handling
+
+        this.app.get('*', (req, res) => res.render('404'))
+
     }
 
     sockets() {

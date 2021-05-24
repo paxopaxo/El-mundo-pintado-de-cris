@@ -2,6 +2,7 @@ const { ObjectId } = require('mongoose').Types
 const { Usuario, Categoria, Producto } = require('../models')
 const { getError } = require('../helpers')
 
+
 const coleccionesPermitidas = [
     'usuarios',
     'categorias',
@@ -16,14 +17,21 @@ const buscarUsuarios = async(termino = '', res) => {
             resultados: (usuario) ? [usuario] : []
         })
     }
-
+    if (termino === '*') {
+        const usuarios = await Usuario.find({ estado: true })
+        return res.json(usuarios)
+    }
     const regex = new RegExp(termino, 'i')
     const usuarios = await Usuario.find({
         $or: [{ username: regex }, { correo: regex }],
         $and: [{ estado: true }]
     })
-
-    res.json(usuarios)
+    
+    if ( usuarios.length < 1 ) {
+        res.status(400).json( getError('No se encontraron coincidencias'))
+    } else {
+        res.json(usuarios)
+    }
 }
 const buscarCategorias = async(termino, res) => {
     const esMongoID = ObjectId.isValid(termino) // verifica que es mongoID
@@ -34,12 +42,21 @@ const buscarCategorias = async(termino, res) => {
         })
     }
 
+    if (termino === '*') {
+        const categorias = await Categoria.find({ estado: true })
+        return res.json(categorias)
+    }
+
     const regex = new RegExp(termino, 'i')
     const categorias = await Categoria.find({
         $or: [{ nombre: regex }, { correo: regex }],
         $and: [{ estado: true }]
     })
-    res.json(categorias)
+    if ( categorias.length < 1) {
+        res.status(400).json( getError('No se encontraron coincidencias'))
+    } else {
+        res.json(categorias)
+    }
 }
 
 const buscarProductos = async(termino, res) => {
@@ -50,12 +67,21 @@ const buscarProductos = async(termino, res) => {
             resultados: (producto) ? [producto] : []
         })
     }
+    if (termino === '*') {
+        const productos = await Producto.find({ estado: true }).populate('usuario', 'username').populate('categoria','nombre')
+        return res.json(productos)
+    }
     const regex = new RegExp(termino, 'i')
     const productos = await Producto.find({
         $or: [{ nombre: regex }, { correo: regex }],
         $and: [{ estado: true }]
-    })
-    res.json(productos)
+    }).populate('usuario', 'username').populate('categoria','nombre')
+
+    if ( productos.length < 1 ) {
+        res.status(400).json( getError('No se encontraron coincidencias'))
+    } else {
+        res.json(productos)
+    }
 }
 
 

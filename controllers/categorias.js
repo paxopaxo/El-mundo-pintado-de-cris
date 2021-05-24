@@ -21,7 +21,7 @@ const obtenerCategoria = async(req, res) => {
 const crearCategoria = async(req,res) => {
 
     try {
-        const nombre = req.body.nombre.toUpperCase()
+        const nombre = req.body.nombre.trim().toUpperCase()
         const { _id } = req.usuarioAutenticado
         
         const data = {
@@ -80,8 +80,8 @@ const borrarCategoria = async(req,res) => {
 
         const productosEliminar = await Producto.updateMany({ categoria: categoria._id }, { estado: false })
         
-        console.log(productosEliminar)
         res.status(200).json({
+            msg: `Categoría ${ categoria.nombre } eliminada correctamente`,
             categoria
         })
 

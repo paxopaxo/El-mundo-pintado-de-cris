@@ -36,7 +36,9 @@ socket.on('disconnect', () => {
 } )
 
 socket.on('categoria', (payload) => {
-    // Definiendo Objeto Clave/valor 
+    
+    selectCategorias.innerHTML = '' 
+
     payload.forEach( categoria => {
         categoriasid.set(categoria.nombre, categoria._id)
     })
@@ -44,11 +46,9 @@ socket.on('categoria', (payload) => {
     const fragment = document.createDocumentFragment()
     const nombresCategoriasArr = payload.map( categorias => categorias.nombre )
 
-    console.log(nombresCategoriasArr)
-
     nombresCategoriasArr.forEach( nombre => {
         const selection = document.createElement('OPTION')
-        selection.classList.add( nombre.replace(' ', '-') )
+        selection.classList.add( nombre.split(' ').join('-') )
         selection.innerHTML = nombre
         fragment.appendChild(selection)
     })
@@ -66,7 +66,7 @@ productosForm.addEventListener('click', async(e) => {
     // Definir data a enviar
     const inputs = document.querySelectorAll('.productos-form > input,select')
 
-    const values = Array.from(inputs).map( element => element.value)
+    const values = Array.from(inputs).map( element => element.value.trim() )
     const keys = ['nombre','categoria','disponible','descripcion']
 
     const data = Object.fromEntries( keys.map( (key, i) => [ key, values[i] ] ) )
@@ -101,6 +101,8 @@ categoriasForm.addEventListener( 'click', async(e) => {
 
     const response = await makePettition({url, data, method:'POST', token: token })
     const dataResponse = await response.json()
+
+    socket.emit('categoria-on-server', undefined )
 
     if (response.ok) {
         console.log(dataResponse)

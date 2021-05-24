@@ -8,7 +8,7 @@ const crearProducto = async(req,res) => { // AGREGAR AÑADIR IMAGENES
         const arrayFiltrado = Object.entries(resto).filter( ([keys, values]) => keys === 'nombre' || keys === 'categoria' || keys === 'disponible' || keys === 'descripcion' )
         const objFiltrado = Object.fromEntries(arrayFiltrado)
         
-        objFiltrado.nombre = objFiltrado.nombre.toUpperCase()
+        objFiltrado.nombre = objFiltrado.nombre.trim().toUpperCase()
         objFiltrado.usuario = req.usuarioAutenticado._id
 
         const producto = new Producto(objFiltrado)
